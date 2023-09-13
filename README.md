@@ -86,9 +86,12 @@ Frontend AND Backend
   * Frontend
     * Poojitha Kommera
     * Advay	Chandramouli
+      
   * Backend
     * Arvindh Kumar	Kalainathan
     * Abhinav	Malkoochi
     * Alan Roybal
+      
   * Project Manager: Abis Naqvi
+    
   * Industry Mentor: Jeshna Gupta
