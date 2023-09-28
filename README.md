@@ -11,6 +11,8 @@ Distracted Driving is a huge problem in the current day. Introducing SafeDrive. 
 
 # Stretch Goals
 
+* Record while driving and act as a dash cam
+* OCR for insurance and lisence info
 * Badges and leveling up
 * License and Vehicle registration information
 * User-based crowd-sourced navigation information
