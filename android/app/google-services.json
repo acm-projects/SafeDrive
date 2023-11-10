@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "297075599265",
+    "project_id": "safedriveuserauth-1e624",
+    "storage_bucket": "safedriveuserauth-1e624.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297075599265:android:61dccbcf3d07be52e8cde0",
+        "android_client_info": {
+          "package_name": "com.example.safedrivealan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSw0ek3qR-5yWKFY3FhVxT1TNWb82gZb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
