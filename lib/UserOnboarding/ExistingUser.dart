@@ -1,7 +1,9 @@
 //Login Screens
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:pr1/global.dart';
+import 'package:sdfinal/UserOnboarding/NewUser.dart';
+import 'package:sdfinal/global.dart';
+import '../Home.dart';
 
 class ExLoginPage extends StatelessWidget {
   TextEditingController userName = new TextEditingController();
@@ -26,7 +28,7 @@ class ExLoginPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 80,),
+            SizedBox(height: 100,),
             Padding(
               padding: EdgeInsets.all(20),
               child: Column(
@@ -38,7 +40,7 @@ class ExLoginPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 40,),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -102,7 +104,12 @@ class ExLoginPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 40,),
-                          Text("Don't have an account? Sign up here.", style: TextStyle(color: Colors.grey),),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => NewUserPage()));
+                            },
+                            child: Text("Don't have an account? Sign up here.", style: TextStyle(color: backgroundPrimary),),
+                          ),
                           SizedBox(height: 40,),
                           GestureDetector(
                             onTap: (){

@@ -1,7 +1,9 @@
 //Login Screens
 import 'package:flutter/material.dart';
-import 'package:pr1/Profile.dart';
-import 'package:pr1/global.dart';
+import 'package:sdfinal/UserProfile/VehicleInfo.dart';
+import 'package:sdfinal/global.dart';
+
+import 'ExistingUser.dart';
 
 class NewUserPage extends StatelessWidget {
   TextEditingController fullName = new TextEditingController();
@@ -29,8 +31,8 @@ class NewUserPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 20),
-            Padding(
+            const SizedBox(height: 20),
+            const Padding(
               padding: EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,20 +45,20 @@ class NewUserPage extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
                 ),
 
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
 
                   child: SingleChildScrollView(
                     child: Column(
                         children: <Widget>[
-                          SizedBox(height: 40),
+                          const SizedBox(height: 40),
                           Container(
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
                                 color: bgWhite,
                                 borderRadius: BorderRadius.circular(10),
@@ -153,13 +155,21 @@ class NewUserPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 30,),
-                          Text("Already have an account? Sign in.", style: TextStyle(color: backgroundPrimary),),
+
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ExLoginPage()));
+                            },
+                            child: Text("Already have an account? Sign in.", style: TextStyle(color: backgroundPrimary),),
+                          ),
+
+
                           SizedBox(height: 30,),
 
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => ProfileScreen(name: fullName.text, email: emailAddress.text, phone: phoneNum.text, dob: dateOfBirth.text, dl: driverLicense.text)));
+                                  MaterialPageRoute(builder: (context) => VehicleInfoPage()));
                             },
 
                             child: Container(

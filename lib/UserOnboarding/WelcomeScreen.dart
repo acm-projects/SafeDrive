@@ -1,8 +1,8 @@
 //Welcome Screen
 import 'package:flutter/material.dart';
-import 'package:pr1/global.dart';
-import 'package:pr1/UserOnboarding/ExistingUser.dart';
-import 'package:pr1/UserOnboarding/NewUser.dart';
+import './ExistingUser.dart';
+import './NewUser.dart';
+import 'package:sdfinal/global.dart';
 
 void main() => runApp(
     const MaterialApp(
