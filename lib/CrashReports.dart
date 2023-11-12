@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import './global.dart';
 import 'NavBar.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class CrashReports extends StatelessWidget {
+  const CrashReports({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {},
             backgroundColor: contrastAccentOne,
             splashColor: contrastAccentTwo,
-            child: const Icon(Icons.add),
+            child: const Icon(Icons.warning),
           ),
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -44,7 +44,7 @@ class ProfilePage extends StatelessWidget {
                     height: 20,
                   ),
                   const Text(
-                    'My\nProfile',
+                    'Help\nCenter',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -202,7 +202,7 @@ class ProfilePage extends StatelessWidget {
                             height: 20,
                           ),
                           const Text(
-                            'My Vehicles',
+                            'My Accidents',
                             style: TextStyle(
                               color: backgroundPrimary,
                               fontSize: 27,

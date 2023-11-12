@@ -1,3 +1,4 @@
+import 'package:sdfinal/CrashReports.dart';
 import 'Home.dart';
 import 'Profile.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ class _NavBarState extends State<NavBar> {
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => AccidentPage(),
+                        builder: (context) => CrashReports(),
                       )
                   );
                 }
@@ -99,15 +100,6 @@ class CameraPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text('Camera Page'),
-    );
-  }
-}
-
-class AccidentPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Crash Reports, on this page...'),
     );
   }
 }
