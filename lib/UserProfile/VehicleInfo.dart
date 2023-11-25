@@ -4,12 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sdfinal/global.dart';
 import 'package:sdfinal/Profile.dart';
 
-class VehicleInfoPage extends StatelessWidget {
-  TextEditingController vehicleMakeModel = TextEditingController();
-  TextEditingController vehicleLicensePlate = TextEditingController();
-  TextEditingController vehicleIdentification = TextEditingController();
+class VehicleInfoPage extends StatefulWidget {
 
-  VehicleInfoPage({super.key});
+  const VehicleInfoPage({super.key});
+
+  @override
+  State<VehicleInfoPage> createState() => _VehicleInfoPageState();
+}
+
+class _VehicleInfoPageState extends State<VehicleInfoPage> {
+  TextEditingController vehicleMakeModel = TextEditingController();
+
+  TextEditingController vehicleLicensePlate = TextEditingController();
+
+  TextEditingController vehicleIdentification = TextEditingController();
 
   @override
   Widget build(BuildContext context)

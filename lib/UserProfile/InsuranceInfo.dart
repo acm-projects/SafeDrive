@@ -5,12 +5,20 @@ import 'package:sdfinal/UserProfile/VehicleInfo.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-class InsuranceInfoPage extends StatelessWidget {
-  TextEditingController insuranceCompany = TextEditingController();
-  TextEditingController policyHolderName = TextEditingController();
-  TextEditingController policyNumber = TextEditingController();
+class InsuranceInfoPage extends StatefulWidget {
 
-  InsuranceInfoPage({super.key});
+  const InsuranceInfoPage({super.key});
+
+  @override
+  State<InsuranceInfoPage> createState() => _InsuranceInfoPageState();
+}
+
+class _InsuranceInfoPageState extends State<InsuranceInfoPage> {
+  TextEditingController insuranceCompany = TextEditingController();
+
+  TextEditingController policyHolderName = TextEditingController();
+
+  TextEditingController policyNumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -260,7 +268,7 @@ class InsuranceInfoPage extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) =>
-                                        VehicleInfoPage()));
+                                        const VehicleInfoPage()));
                               },
 
                               child: Center(
@@ -365,6 +373,5 @@ class InsuranceInfoPage extends StatelessWidget {
       },
     );
   }
-
 }
 

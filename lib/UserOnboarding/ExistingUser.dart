@@ -5,11 +5,18 @@ import 'package:sdfinal/UserOnboarding/NewUser.dart';
 import 'package:sdfinal/global.dart';
 import '../Home.dart';
 
-class ExLoginPage extends StatelessWidget {
-  TextEditingController userName = TextEditingController();
-  TextEditingController passWord = TextEditingController();
+class ExLoginPage extends StatefulWidget {
 
-  ExLoginPage({super.key});
+  const ExLoginPage({super.key});
+
+  @override
+  State<ExLoginPage> createState() => _ExLoginPageState();
+}
+
+class _ExLoginPageState extends State<ExLoginPage> {
+  TextEditingController userName = TextEditingController();
+
+  TextEditingController passWord = TextEditingController();
 
   @override
   Widget build(BuildContext context)

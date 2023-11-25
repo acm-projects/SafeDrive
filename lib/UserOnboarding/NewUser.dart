@@ -5,13 +5,22 @@ import 'package:sdfinal/UserProfile/DriverInfo.dart';
 import 'package:sdfinal/global.dart';
 import 'package:sdfinal/UserOnboarding/ExistingUser.dart';
 
-class NewUserPage extends StatelessWidget {
-  TextEditingController fullName = TextEditingController();
-  TextEditingController emailAddress = TextEditingController();
-  TextEditingController passWord = TextEditingController();
-  TextEditingController confPassword = TextEditingController();
+class NewUserPage extends StatefulWidget {
 
-  NewUserPage({super.key});
+  const NewUserPage({super.key});
+
+  @override
+  State<NewUserPage> createState() => _NewUserPageState();
+}
+
+class _NewUserPageState extends State<NewUserPage> {
+  TextEditingController fullName = TextEditingController();
+
+  TextEditingController emailAddress = TextEditingController();
+
+  TextEditingController passWord = TextEditingController();
+
+  TextEditingController confPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context)

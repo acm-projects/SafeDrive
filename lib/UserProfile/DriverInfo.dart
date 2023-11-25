@@ -3,12 +3,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sdfinal/UserProfile/InsuranceInfo.dart';
 import 'package:sdfinal/global.dart';
 
-class DriverInfoPage extends StatelessWidget {
-  TextEditingController dateOfBirth = TextEditingController();
-  TextEditingController phoneNumber = TextEditingController();
-  TextEditingController driversLicense = TextEditingController();
+class DriverInfoPage extends StatefulWidget {
 
-  DriverInfoPage({super.key});
+  const DriverInfoPage({super.key});
+
+  @override
+  State<DriverInfoPage> createState() => _DriverInfoPageState();
+}
+
+class _DriverInfoPageState extends State<DriverInfoPage> {
+  TextEditingController dateOfBirth = TextEditingController();
+
+  TextEditingController phoneNumber = TextEditingController();
+
+  TextEditingController driversLicense = TextEditingController();
 
   @override
   Widget build(BuildContext context)
