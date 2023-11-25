@@ -11,6 +11,6 @@ const bgWhite = Color(0xFFFFFFFF);
 
 //Image Assets
 const String safeDriveLogo = "assets/SafeDriveLogo.png";
-const String findingVIN = "assets/FindingVIN-SD.jpg";
-const String insuranceInfo = "assets/FindingInsurance.jpg";
+const String findingVIN = "assets/FindingVIN.jpg";
+const String insuranceInfo = "assets/FindingInsurance.png";
 const String userProfile = "assets/UserProfile.png";

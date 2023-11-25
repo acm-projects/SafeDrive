@@ -1,17 +1,14 @@
-//Onboarding Screens
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sdfinal/UserProfile/DriverInfo.dart';
+import 'package:sdfinal/UserProfile/InsuranceInfo.dart';
 import 'package:sdfinal/global.dart';
-import 'package:sdfinal/UserOnboarding/ExistingUser.dart';
 
-class NewUserPage extends StatelessWidget {
-  TextEditingController fullName = TextEditingController();
-  TextEditingController emailAddress = TextEditingController();
-  TextEditingController passWord = TextEditingController();
-  TextEditingController confPassword = TextEditingController();
+class DriverInfoPage extends StatelessWidget {
+  TextEditingController dateOfBirth = TextEditingController();
+  TextEditingController phoneNumber = TextEditingController();
+  TextEditingController driversLicense = TextEditingController();
 
-  NewUserPage({super.key});
+  DriverInfoPage({super.key});
 
   @override
   Widget build(BuildContext context)
@@ -29,14 +26,14 @@ class NewUserPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 20),
+            const SizedBox(height: 100),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget> [
                   Text(
-                    'Welcome to SafeDrive',
+                    'About You',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
@@ -48,7 +45,7 @@ class NewUserPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 5,),
                   Text(
-                    "Let's start with some basic credentials.",
+                    "Simply enter the fields for easy access in the future.",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
@@ -80,7 +77,7 @@ class NewUserPage extends StatelessWidget {
                           //Input Text Field Container
 
                           Text(
-                            'Full Name',
+                            'Date of Birth',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
@@ -110,59 +107,9 @@ class NewUserPage extends StatelessWidget {
                                       border: Border(bottom: BorderSide(color: Colors.grey.shade200))
                                   ),
                                   child: TextField(
-                                    controller: fullName,
+                                    controller: dateOfBirth,
                                     decoration: InputDecoration(
-                                        hintText: "Ex: John Doe",
-                                        hintStyle: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey,
-                                          ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-
-                          const SizedBox(height: 10,),
-                          Text(
-                            'Email Address',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: backgroundPrimary,
-                                )
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: bgWhite,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: const [BoxShadow(
-                                    color: backgroundAccentOne,
-                                    blurRadius: 20,
-                                    offset: Offset(0, 10)
-                                )]
-                            ),
-
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: const EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey.shade200))
-                                  ),
-                                  child: TextField(
-                                    controller: emailAddress,
-                                    decoration: InputDecoration(
-                                        hintText: "Ex: johndoe@safedrive.com",
+                                        hintText: "Ex: MM/DD/YYYY",
                                         hintStyle: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
                                             fontSize: 14,
@@ -180,7 +127,7 @@ class NewUserPage extends StatelessWidget {
 
                           const SizedBox(height: 10,),
                           Text(
-                            'Password',
+                            'Phone Number',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
@@ -210,98 +157,79 @@ class NewUserPage extends StatelessWidget {
                                       border: Border(bottom: BorderSide(color: Colors.grey.shade200))
                                   ),
                                   child: TextField(
-                                    controller: passWord,
+                                    controller: phoneNumber,
                                     decoration: InputDecoration(
-                                        hintText: "Ex: *******",
+                                        hintText: "Ex: (123)-456-7890",
                                         hintStyle: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey,
-                                            ),
-                                      ),
-                                    ) ,
-                                ),
-                                )],
-                            ),
-                          ),
-
-                          const SizedBox(height: 10,),
-                          Text(
-                            'Re-Confirm Password',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: backgroundPrimary,
-                                )
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: bgWhite,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: const [BoxShadow(
-                                    color: backgroundAccentOne,
-                                    blurRadius: 20,
-                                    offset: Offset(0, 10)
-                                )]
-                            ),
-
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: const EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey.shade200))
-                                  ),
-                                  child: TextField(
-                                    controller: confPassword,
-                                    decoration: InputDecoration(
-                                      hintText: "Ex: *******",
-                                      hintStyle: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
+                                          textStyle: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
                                         ),
-                                      ),
-                                    ) ,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
 
-                          const SizedBox(height: 25,),
 
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ExLoginPage()));
-                            },
-                            child: Center(
-                                child: Text(
-                                  "Already have an account? Sign in.",
-                                  style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      color: backgroundPrimary,
-                                    ),
-                                  ),
+                          const SizedBox(height: 10,),
+                          Text(
+                            "Driver's License (DL)",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: backgroundPrimary,
                                 )
                             ),
                           ),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: bgWhite,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: const [BoxShadow(
+                                    color: backgroundAccentOne,
+                                    blurRadius: 20,
+                                    offset: Offset(0, 10)
+                                )]
+                            ),
 
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: Colors.grey.shade200))
+                                  ),
+                                  child: TextField(
+                                    controller: driversLicense,
+                                    decoration: InputDecoration(
+                                        hintText: "Ex: 11224075",
+                                        hintStyle: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
 
                           const SizedBox(height: 25,),
 
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => DriverInfoPage()));
+                                  MaterialPageRoute(builder: (context) => InsuranceInfoPage()));
                             },
 
                             child: Center(
@@ -314,13 +242,13 @@ class NewUserPage extends StatelessWidget {
                                   border: Border.all(color: contrastAccentOne),
                                     boxShadow: const [BoxShadow(
                                         color: backgroundAccentOne,
-                                        blurRadius: 5,
+                                        blurRadius: 20,
                                         offset: Offset(0, 10)
                                     )]
                                 ),
                                 child: Center(
                                   child: Text(
-                                    '> SIGN UP >',
+                                    '> NEXT >',
                                     style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
                                         fontSize: 18,

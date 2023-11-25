@@ -1,11 +1,11 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sdfinal/UserProfile/VehicleInfo.dart';
-import './global.dart';
-import 'NavBar.dart';
+import 'package:sdfinal/AccidentAssistance/AccidentChecklistOverview.dart';
+import 'package:sdfinal/global.dart';
+import 'package:sdfinal/NavBar.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class CrashReports extends StatelessWidget {
+  const CrashReports({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,15 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         Scaffold(
-          bottomNavigationBar: const NavBar(initialIndex: 3,),
-          //Button to add vehicle
+          bottomNavigationBar: const NavBar(initialIndex: 2,),
+          //Button to accident checklist
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => VehicleInfoPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const AccidentChecklist()));
             },
             backgroundColor: contrastAccentOne,
             splashColor: contrastAccentTwo,
-            child: const Icon(Icons.add),
+            child: const Icon(Icons.warning),
           ),
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -44,14 +44,14 @@ class ProfilePage extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    'My\nProfile',
+                    'Driver\nAssistance',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 42,
-                        fontWeight: FontWeight.bold,
-                        color: bgWhite,
-                      )
+                        textStyle: const TextStyle(
+                          fontSize: 42,
+                          fontWeight: FontWeight.bold,
+                          color: bgWhite,
+                        )
                     ),
                   ),
                   const SizedBox(
@@ -281,7 +281,7 @@ class ProfilePage extends StatelessWidget {
                                             ),
                                           ),
                                         ]
-                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -308,7 +308,7 @@ class ProfilePage extends StatelessWidget {
                     height: 30,
                   ),
                   Container(
-                    height: height * 0.55,
+                    height: height * 0.90,
                     width: width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
@@ -322,7 +322,7 @@ class ProfilePage extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            'My Vehicles',
+                            'My Accidents',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
@@ -340,56 +340,7 @@ class ProfilePage extends StatelessWidget {
                             height: 10,
                           ),
                           Container(
-                            height: height * 0.15,
-                            width: width * 0.80,
-                            decoration: BoxDecoration(
-                              color: backgroundAccentOne,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Vehicle Make & Model #1',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: contrastAccentOne,
-                                      )
-                                  ),
-                                ),
-                                Text(
-                                  'License Plate Number',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        color: backgroundPrimary,
-                                      )
-                                  ),
-                                ),
-                                Text(
-                                  'Vehicle Identification #',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        color: backgroundPrimary,
-                                      )
-                                  ),
-                                ),
-                              ],
-                            )
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                              height: height * 0.15,
+                              height: height * 0.35,
                               width: width * 0.80,
                               decoration: BoxDecoration(
                                 color: backgroundAccentOne,
@@ -401,7 +352,7 @@ class ProfilePage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Vehicle Make & Model #2',
+                                    'Driver Name #1',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
@@ -412,21 +363,87 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'License Plate Number',
+                                    'Phone Number: ',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           color: backgroundPrimary,
                                         )
                                     ),
                                   ),
                                   Text(
-                                    'Vehicle Identification #',
+                                    'Vehicle Make/Model: ',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Color: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'License Plate #: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Location: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Vehicle Make/Model: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Insurance Co.: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Policy Number: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
                                           color: backgroundPrimary,
                                         )
                                     ),
@@ -434,6 +451,123 @@ class ProfilePage extends StatelessWidget {
                                 ],
                               )
                           ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+
+                          Container(
+                              height: height * 0.35,
+                              width: width * 0.80,
+                              decoration: BoxDecoration(
+                                color: backgroundAccentOne,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Driver Name #2',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: contrastAccentOne,
+                                        )
+                                    ),
+                                  ),
+                                  Text(
+                                    'Phone Number: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+                                  Text(
+                                    'Vehicle Make/Model: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Color: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'License Plate #: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Location: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Vehicle Make/Model: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Insurance Co.: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+
+                                  Text(
+                                    'Policy Number: ',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          color: backgroundPrimary,
+                                        )
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+
                         ],
                       ),
                     ),

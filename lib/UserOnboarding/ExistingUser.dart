@@ -1,13 +1,15 @@
 //Login Screens
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sdfinal/UserOnboarding/NewUser.dart';
 import 'package:sdfinal/global.dart';
 import '../Home.dart';
 
 class ExLoginPage extends StatelessWidget {
-  TextEditingController userName = new TextEditingController();
-  TextEditingController passWord = new TextEditingController();
+  TextEditingController userName = TextEditingController();
+  TextEditingController passWord = TextEditingController();
+
+  ExLoginPage({super.key});
 
   @override
   Widget build(BuildContext context)
@@ -15,131 +17,223 @@ class ExLoginPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [
-              backgroundPrimary,
-              Colors.blue.shade900,
-              Colors.blue.shade800,
-            ]
-          )
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/SDBackground.png'),
+              fit: BoxFit.cover,
+            )
         ),
+
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 100,),
+            const SizedBox(height: 100),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(40),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget> [
-                  Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),),
-                  SizedBox(height: 10,),
-                  Text("Welcome Back. Please sign in with your credentials.", style: TextStyle(color: Colors.white, fontSize: 18),),
+                  Text(
+                    'Welcome Back \nto SafeDrive',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: bgWhite,
+                        )
+                    ),
+                  ),
+                  const SizedBox(height: 5,),
+                  Text(
+                    "Sign in with your credentials.",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                          color: bgWhite,
+                        )
+                    ),
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 40,),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
                 ),
 
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
 
-                  child: SingleChildScrollView(
-                    child: Column(
-                        children: <Widget>[
-                          SizedBox(height: 60,),
-                          Container(
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: bgWhite,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [BoxShadow(
-                                    color: Color.fromRGBO(225, 95, 27, 0.3),
-                                    blurRadius: 20,
-                                    offset: Offset(0, 10)
-                                )]
-                            ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
 
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey.shade200))
-                                  ),
-                                  child: TextField(
-                                    controller: userName,
-                                    decoration: InputDecoration(
-                                        hintText: "Email Address",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
-                                    ),
-                                  ),
-                                ),
-
-
-                                //Username and password text input
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey.shade200))
-                                  ),
-                                  child: TextField(
-                                    controller: passWord,
-                                    decoration: InputDecoration(
-                                        hintText: "Password",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 40,),
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => NewUserPage()));
-                            },
-                            child: Text("Don't have an account? Sign up here.", style: TextStyle(color: backgroundPrimary),),
-                          ),
-                          SizedBox(height: 40,),
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => HomePage()));
-                            },
-
-                            child: Container(
-                              height: 50,
-                              margin: EdgeInsets.symmetric(horizontal: 50),
-
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: contrastAccentOne,
-                              ),
-
-                              child: Center(
-                                  child: Text(
-                                      "Login",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold
-                                      )
+                          children: <Widget>[
+                            const SizedBox(height: 25),
+                            //Input Text Field Container
+                            const SizedBox(height: 10,),
+                            Text(
+                              'Username (Email Address)',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: backgroundPrimary,
                                   )
                               ),
                             ),
-                          )
-                        ]
-                    ),
-                  )
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  color: bgWhite,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: const [BoxShadow(
+                                      color: backgroundAccentOne,
+                                      blurRadius: 20,
+                                      offset: Offset(0, 10)
+                                  )]
+                              ),
+
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.grey.shade200))
+                                    ),
+                                    child: TextField(
+                                      controller: userName,
+                                      decoration: InputDecoration(
+                                        hintText: "Ex: johndoe@safedrive.com",
+                                        hintStyle: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+
+                            const SizedBox(height: 10,),
+                            Text(
+                              'Password',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: backgroundPrimary,
+                                  )
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  color: bgWhite,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: const [BoxShadow(
+                                      color: backgroundAccentOne,
+                                      blurRadius: 20,
+                                      offset: Offset(0, 10)
+                                  )]
+                              ),
+
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.grey.shade200))
+                                    ),
+                                    child: TextField(
+                                      controller: passWord,
+                                      decoration: InputDecoration(
+                                        hintText: "Ex: *******",
+                                        hintStyle: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ) ,
+                                    ),
+                                  )],
+                              ),
+                            ),
+                            const SizedBox(height: 25,),
+
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => NewUserPage()));
+                              },
+                              child: Center(
+                                  child: Text(
+                                    "New to SafeDrive? Sign up here.",
+                                    style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.normal,
+                                        color: backgroundPrimary,
+                                      ),
+                                    ),
+                                  )
+                              ),
+                            ),
+
+
+                            const SizedBox(height: 25,),
+
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => const HomePage()));
+                              },
+
+                              child: Center(
+                                child: Container(
+                                  height: 53,
+                                  width: 320,
+                                  decoration: BoxDecoration(
+                                      color: contrastAccentOne,
+                                      borderRadius: BorderRadius.circular(30),
+                                      border: Border.all(color: contrastAccentOne),
+                                      boxShadow: const [BoxShadow(
+                                          color: backgroundAccentOne,
+                                          blurRadius: 5,
+                                          offset: Offset(0, 10)
+                                      )]
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '> LOG IN >',
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: bgWhite,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ]
+                      ),
+                    )
                 ),
               ),
             )

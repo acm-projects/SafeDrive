@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './ExistingUser.dart';
 import './NewUser.dart';
 import 'package:sdfinal/global.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(
     const MaterialApp(
@@ -11,7 +12,7 @@ void main() => runApp(
 );
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +20,36 @@ class WelcomeScreen extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  backgroundPrimary,
-                  Colors.blue.shade900,
-                  backgroundAccentOne,
-                ]
-            )
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/SDBackground.png'),
+            fit: BoxFit.cover,
+          )
         ),
         child: Column(
             children: [
               const Padding(
-                padding: EdgeInsets.only(top: 200.0),
-                child: Image(image: AssetImage('assets/SafeDriveLogo.jpg')),
+                padding: EdgeInsets.only(top: 100.0),
+                child: Image(image: AssetImage('assets/SafeDriveLogo.png')),
               ),
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
-              const Text('Welcome to SafeDrive.',style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white
-              ),),
-              const SizedBox(height: 30,),
+
+               Center(
+                 child: Text(
+                  'Welcome to \n  SafeDrive',
+                  style: GoogleFonts.poppins
+                    (
+                      textStyle: const TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                    ),
+                  ),
+                ),
+               ),
+              const SizedBox(height: 20,),
               GestureDetector(
                 onTap: (){
                   Navigator.push(context,
@@ -54,11 +62,18 @@ class WelcomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: const Center(child: Text('SIGN IN',style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                  ),),),
+                  child: Center(
+                    child: Text(
+                      'SIGN IN',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: bgWhite,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 30,),
@@ -75,11 +90,18 @@ class WelcomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: const Center(child: Text('GET STARTED',style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
-                  ),),),
+                  child: Center(
+                    child: Text(
+                      'GET STARTED',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: backgroundPrimary,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const Spacer()
