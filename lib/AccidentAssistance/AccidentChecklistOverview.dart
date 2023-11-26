@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sdfinal/AccidentAssistance/CrashReports.dart';
+import 'package:sdfinal/AccidentAssistance/StepFour-GetHOme.dart';
+import 'package:sdfinal/AccidentAssistance/StepOne-EMS.dart';
+import 'package:sdfinal/AccidentAssistance/StepThree-Documentation.dart';
+import 'package:sdfinal/AccidentAssistance/StepTwo-PoliceArrival.dart';
 import 'package:sdfinal/global.dart';
 
 class AccidentChecklist extends StatefulWidget {
@@ -10,6 +15,11 @@ class AccidentChecklist extends StatefulWidget {
 }
 
 class _AccidentChecklistState extends State<AccidentChecklist> {
+  bool stepOneCompleted = false;
+  bool stepTwoCompleted = false;
+  bool stepThreeCompleted = false;
+  bool stepFourCompleted = false;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,6 +36,15 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
         ),
 
         Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CrashReports()));
+            },
+            backgroundColor: contrastAccentTwo,
+            child: const Icon(Icons.chevron_left),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+
           //Button to add vehicle
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -73,7 +92,7 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
                       height: height * 0.15,
                       margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
-                        color: bgWhite,
+                        color: stepOneCompleted ? backgroundAccentTwo : bgWhite,
                         borderRadius: BorderRadius.circular(20),
                       ),
 
@@ -103,7 +122,12 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
                         ),
                         trailing: const Icon(Icons.arrow_forward_ios, color: contrastAccentTwo, size: 35),
                         leading: const Icon(Icons.emergency, color: contrastAccentTwo, size: 35),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                              builder: (context) => const StepOneEMS()));
+                        },
                       )
                   ),
 
@@ -119,7 +143,7 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
 
                       child: ListTile(
                         title: Text(
-                          'Wait for Police',
+                          'Wait for Police to Arrive',
                           textAlign: TextAlign.left,
                           style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
@@ -141,7 +165,10 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
                         ),
                         trailing: const Icon(Icons.arrow_forward_ios, color: contrastAccentTwo, size: 35),
                         leading: const Icon(Icons.local_police_sharp, color: contrastAccentTwo, size: 35),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const StepTwoPolice()));
+                        },
                       )
                   ),
 
@@ -179,7 +206,10 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
                         ),
                         trailing: const Icon(Icons.arrow_forward_ios, color: contrastAccentTwo, size: 35),
                         leading: const Icon(Icons.description, color: contrastAccentTwo, size: 35),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const StepThreeDocumentation()));
+                        },
                       )
                   ),
 
@@ -217,7 +247,10 @@ class _AccidentChecklistState extends State<AccidentChecklist> {
                         ),
                         trailing: const Icon(Icons.arrow_forward_ios, color: contrastAccentTwo, size: 35),
                         leading: const Icon(Icons.healing_rounded, color: contrastAccentTwo, size: 35),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const StepFourGetHome()));
+                        },
                       )
                   ),
                 ],
