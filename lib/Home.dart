@@ -8,7 +8,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -18,16 +17,15 @@ class HomePage extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/SDBackground.png'),
-                fit: BoxFit.cover,
-              )
-          ),
+            image: AssetImage('assets/SDBackground.png'),
+            fit: BoxFit.cover,
+          )),
         ),
-
         Scaffold(
-          bottomNavigationBar: const NavBar(initialIndex: 0,),
+          bottomNavigationBar: const NavBar(
+            initialIndex: 0,
+          ),
           backgroundColor: Colors.transparent,
-
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
@@ -43,17 +41,15 @@ class HomePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
-                            fontSize: 42,
-                            fontWeight: FontWeight.bold,
-                            color: bgWhite,
-                          )
-                      ),
+                        fontSize: 42,
+                        fontWeight: FontWeight.bold,
+                        color: bgWhite,
+                      )),
                     ),
                   ),
                   const SizedBox(
                     height: 40,
                   ),
-
                   Container(
                     height: height,
                     width: width,
@@ -73,17 +69,15 @@ class HomePage extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: backgroundPrimary,
-                                )
-                            ),
+                              fontSize: 36,
+                              fontWeight: FontWeight.bold,
+                              color: backgroundPrimary,
+                            )),
                           ),
                           const Divider(
                             thickness: 2.5,
                             color: backgroundPrimary,
                           ),
-
                           const SizedBox(
                             height: 15,
                           ),
@@ -93,96 +87,78 @@ class HomePage extends StatelessWidget {
                               color: backgroundAccentOne,
                               borderRadius: BorderRadius.circular(10),
                             ),
-
                             child: ExpansionTile(
                               title: Text(
                                 'Hard Brakes: ',
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: contrastAccentOne,
-                                    )
-                                ),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: contrastAccentOne,
+                                )),
                               ),
                               children: const <Widget>[
                                 ListTile(
-                                    title: Text(
-                                        "Expanded view of statistics?"
-                                    )
-                                ),
+                                    title:
+                                        Text("Expanded view of statistics?")),
                               ],
                             ),
                           ),
-
                           const SizedBox(
                             height: 25,
                           ),
-
                           Container(
                             width: width * 0.80,
                             decoration: BoxDecoration(
                               color: backgroundAccentOne,
                               borderRadius: BorderRadius.circular(15),
                             ),
-
                             child: ExpansionTile(
                               title: Text(
                                 'Average Speed: 65.2mph',
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: contrastAccentOne,
-                                    )
-                                ),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: contrastAccentOne,
+                                )),
                               ),
                               children: const <Widget>[
                                 ListTile(
-                                    title: Text(
-                                        "Expanded view of statistics?"
-                                    )
-                                ),
+                                    title:
+                                        Text("Expanded view of statistics?")),
                               ],
                             ),
                           ),
-
                           const SizedBox(
                             height: 25,
                           ),
-
                           Container(
                             width: width * 0.80,
                             decoration: BoxDecoration(
                               color: backgroundAccentOne,
                               borderRadius: BorderRadius.circular(15),
                             ),
-
                             child: ExpansionTile(
                               title: Text(
                                 'Average Trip Distance: ',
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: contrastAccentOne,
-                                    )
-                                ),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: contrastAccentOne,
+                                )),
                               ),
                               children: const <Widget>[
                                 ListTile(
-                                    title: Text(
-                                        "Expanded view of statistics?"
-                                    )
-                                ),
+                                    title:
+                                        Text("Expanded view of statistics?")),
                               ],
                             ),
                           )
-
-
                         ],
                       ),
                     ),

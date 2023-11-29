@@ -35,6 +35,15 @@ class _NewUserPageState extends State<NewUserPage> {
           .set({
         'Full Name': fullName.text,
         'Email Address': emailAddress.text,
+        'Driver Full Name': '',
+        'Driver Phone Number': '',
+        'Driver DL': '',
+        'Driver Insurance Company': '',
+        'Driver Vehicle Color': '',
+        'Driver Policy Number': '',
+        'Driver Vehicle Make and Model': '',
+        'Driver Vehicle License Plate Number': '',
+        'Accident Location': ''
       });
     }
 

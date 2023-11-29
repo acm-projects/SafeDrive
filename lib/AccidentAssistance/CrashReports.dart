@@ -3,9 +3,66 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sdfinal/AccidentAssistance/AccidentChecklistOverview.dart';
 import 'package:sdfinal/global.dart';
 import 'package:sdfinal/NavBar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CrashReports extends StatelessWidget {
+String otherFullName = "";
+String dob = "";
+String otherPhoneNumber = "";
+String otherDriversLicense = "";
+String otherInsuranceCo = "";
+String policyHolder = "";
+String otherPolicyNumber = "";
+String otherMakeModel = "";
+String licensePlate = "";
+String otherVehicleID = "";
+String accidentLocation = "";
+String otherCarColor = "";
+String dateOfBirth = "";
+String phoneNumber = "";
+String driversLicense = "";
+String insuranceCo = "";
+String policyNumber = "";
+String policyHolderName = "";
+String fullName = "";
+
+class CrashReports extends StatefulWidget {
   const CrashReports({super.key});
+
+  @override
+  State<CrashReports> createState() => _CrashReportsState();
+}
+
+class _CrashReportsState extends State<CrashReports> {
+  void initState() {
+    super.initState();
+    getInsuranceData();
+  }
+
+  void getInsuranceData() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .get();
+    setState(() {
+      otherFullName = snapshot['Driver Full Name'];
+      otherPhoneNumber = snapshot['Driver Phone Number'];
+      otherDriversLicense = snapshot['Driver DL'];
+      otherInsuranceCo = snapshot['Driver Insurance Company'];
+      otherCarColor = snapshot['Driver Vehicle Color'];
+      otherPolicyNumber = snapshot['Driver Policy Number'];
+      otherMakeModel = snapshot['Driver Vehicle Make and Model'];
+      otherVehicleID = snapshot['Driver Vehicle License Plate Number'];
+      accidentLocation = snapshot['Accident Location'];
+      dateOfBirth = snapshot['Date of Birth'];
+      phoneNumber = snapshot['Phone Number'];
+      driversLicense = snapshot['Driver License'];
+      insuranceCo = snapshot['Insurance Company'];
+      policyNumber = snapshot['Policy Number'];
+      policyHolderName = snapshot['Policyholder Name'];
+      fullName = snapshot['Full Name'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +74,21 @@ class CrashReports extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/SDBackground.png'),
-                fit: BoxFit.cover,
-              )
-          ),
+            image: AssetImage('assets/SDBackground.png'),
+            fit: BoxFit.cover,
+          )),
         ),
         Scaffold(
-          bottomNavigationBar: const NavBar(initialIndex: 2,),
+          bottomNavigationBar: const NavBar(
+            initialIndex: 2,
+          ),
           //Button to accident checklist
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AccidentChecklist()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AccidentChecklist()));
             },
             backgroundColor: contrastAccentOne,
             splashColor: contrastAccentTwo,
@@ -48,16 +109,16 @@ class CrashReports extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
-                          fontSize: 42,
-                          fontWeight: FontWeight.bold,
-                          color: bgWhite,
-                        )
-                    ),
+                      fontSize: 42,
+                      fontWeight: FontWeight.bold,
+                      color: bgWhite,
+                    )),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  SizedBox(//container
+                  SizedBox(
+                    //container
                     height: height * 0.5,
                     child: LayoutBuilder(
                       builder: (context, constraints) {
@@ -83,210 +144,148 @@ class CrashReports extends StatelessWidget {
                                       height: 60,
                                     ),
                                     Text(
-                                      'John Doe',
+                                      fullName ?? '',
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
-                                            fontSize: 36,
-                                            fontWeight: FontWeight.bold,
-                                            color: contrastAccentTwo,
-                                          )
-                                      ),
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.bold,
+                                        color: contrastAccentTwo,
+                                      )),
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
-
-                                    Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(
-                                                "Date of Birth: ",
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-
-                                          Expanded(
-                                            child: Text(
-                                                " USER DOB here ",
-                                                textAlign: TextAlign.left,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-                                        ]
-                                    ),
-
-                                    Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(
-                                                "Phone Number: ",
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-
-                                          Expanded(
-                                            child: Text(
-                                                " USER PHONE here ",
-                                                textAlign: TextAlign.left,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-                                        ]
-                                    ),
-
-                                    Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(
-                                                "Driver's License: ",
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-
-                                          Expanded(
-                                            child: Text(
-                                                " USER DL here ",
-                                                textAlign: TextAlign.left,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-                                        ]
-                                    ),
-
-                                    Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(
-                                                "Insurance Co: ",
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-
-                                          Expanded(
-                                            child: Text(
-                                                " USER Ins. here ",
-                                                textAlign: TextAlign.left,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-                                        ]
-                                    ),
-
-                                    Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(
-                                                "Policy Holder: ",
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-
-                                          Expanded(
-                                            child: Text(
-                                                " PHN NAME here ",
-                                                textAlign: TextAlign.left,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-                                        ]
-                                    ),
-
-                                    Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Text(
-                                                "Policy Number:",
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-
-                                          Expanded(
-                                            child: Text(
-                                                " USER PN HERE",
-                                                textAlign: TextAlign.left,
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: backgroundPrimary,
-                                                    )
-                                                )
-                                            ),
-                                          ),
-                                        ]
-                                    ),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                        child: Text("Date of Birth: ",
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                      Expanded(
+                                        child: Text(dateOfBirth ?? '',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                    ]),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                        child: Text("Phone Number: ",
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                      Expanded(
+                                        child: Text(phoneNumber ?? '',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                    ]),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                        child: Text("Driver's License: ",
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                      Expanded(
+                                        child: Text(driversLicense ?? '',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                    ]),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                        child: Text("Insurance Co: ",
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                      Expanded(
+                                        child: Text(insuranceCo ?? '',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                    ]),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                        child: Text("Policy Holder: ",
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                      Expanded(
+                                        child: Text(policyHolderName ?? '',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                    ]),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                        child: Text("Policy Number:",
+                                            textAlign: TextAlign.right,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                      Expanded(
+                                        child: Text(policyNumber ?? '',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              fontSize: 20,
+                                              color: backgroundPrimary,
+                                            ))),
+                                      ),
+                                    ]),
                                   ],
                                 ),
                               ),
                             ),
-
                             Positioned(
                               top: 0,
                               left: 0,
@@ -326,11 +325,10 @@ class CrashReports extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: backgroundPrimary,
-                                )
-                            ),
+                              fontSize: 36,
+                              fontWeight: FontWeight.bold,
+                              color: backgroundPrimary,
+                            )),
                           ),
                           const Divider(
                             thickness: 2.5,
@@ -346,228 +344,88 @@ class CrashReports extends StatelessWidget {
                                 color: backgroundAccentOne,
                                 borderRadius: BorderRadius.circular(30),
                               ),
-
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Driver Name #1',
+                                    otherFullName ?? '',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: contrastAccentOne,
-                                        )
-                                    ),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: contrastAccentOne,
+                                    )),
                                   ),
                                   Text(
-                                    'Phone Number: ',
+                                    'Phone Number: ${otherPhoneNumber ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
                                   Text(
-                                    'Vehicle Make/Model: ',
+                                    'Vehicle Make/Model: ${otherMakeModel ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
-
                                   Text(
-                                    'Color: ',
+                                    'Color: ${otherCarColor ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
-
                                   Text(
-                                    'License Plate #: ',
+                                    'License Plate #: ${otherVehicleID ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
-
                                   Text(
-                                    'Location: ',
+                                    'Location: ${accidentLocation ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
-
                                   Text(
-                                    'Vehicle Make/Model: ',
+                                    'Insurance Co.: ${otherInsuranceCo ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
-
                                   Text(
-                                    'Insurance Co.: ',
+                                    'Policy Number: ${otherPolicyNumber ?? ''}',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'Policy Number: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
+                                      fontSize: 18,
+                                      color: backgroundPrimary,
+                                    )),
                                   ),
                                 ],
-                              )
-                          ),
+                              )),
                           const SizedBox(
                             height: 30,
                           ),
-
-                          Container(
-                              height: height * 0.35,
-                              width: width * 0.80,
-                              decoration: BoxDecoration(
-                                color: backgroundAccentOne,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Driver Name #2',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: contrastAccentOne,
-                                        )
-                                    ),
-                                  ),
-                                  Text(
-                                    'Phone Number: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-                                  Text(
-                                    'Vehicle Make/Model: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'Color: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'License Plate #: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'Location: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'Vehicle Make/Model: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'Insurance Co.: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-
-                                  Text(
-                                    'Policy Number: ',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                          fontSize: 18,
-                                          color: backgroundPrimary,
-                                        )
-                                    ),
-                                  ),
-                                ],
-                              )
-                          ),
-
                         ],
                       ),
                     ),

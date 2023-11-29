@@ -30,9 +30,7 @@ class _StepThreeExchangeInfoState extends State<StepThreeExchangeInfo> {
       FirebaseFirestore.instance
           .collection('Users')
           .doc(auth.currentUser?.uid)
-          .collection("Accident Data")
-          .doc()
-          .set({
+          .update({
         'Driver Full Name': fullName.text,
         'Driver Phone Number': phoneNumber.text,
         'Driver DL': otherDL.text,
@@ -588,6 +586,7 @@ class _StepThreeExchangeInfoState extends State<StepThreeExchangeInfo> {
                                       ),
                                       child: IconButton(
                                         onPressed: () {
+                                          accidentDataUpload();
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(

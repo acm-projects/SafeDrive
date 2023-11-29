@@ -1,9 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:sdfinal/Profile.dart';
 import './global.dart';
 import 'NavBar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CrashReports extends StatelessWidget {
+String otherFullName = "";
+String dob = "";
+String otherPhoneNumber = "";
+String otherDriversLicense = "";
+String otherInsuranceCo = "";
+String policyHolder = "";
+String otherPolicyNumber = "";
+String otherMakeModel = "";
+String licensePlate = "";
+String otherVehicleID = "";
+String accidentLocation = "";
+String otherCarColor = "";
+String dateOfBirth = "";
+String phoneNumber = "";
+String driversLicense = "";
+String insuranceCo = "";
+String policyNumber = "";
+String policyHolderName = "";
+
+class CrashReports extends StatefulWidget {
   const CrashReports({super.key});
+
+  @override
+  State<CrashReports> createState() => _CrashReportsState();
+}
+
+class _CrashReportsState extends State<CrashReports> {
+  void initState() {
+    super.initState();
+    getInsuranceData();
+  }
+
+  void getInsuranceData() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .get();
+    setState(() {
+      otherFullName = snapshot['Driver Full Name'];
+      otherPhoneNumber = snapshot['Driver Phone Number'];
+      otherDriversLicense = snapshot['Driver DL'];
+      otherInsuranceCo = snapshot['Driver Insurance Company'];
+      otherCarColor = snapshot['Driver Vehicle Color'];
+      otherPolicyNumber = snapshot['Driver Policy Number'];
+      otherMakeModel = snapshot['Driver Vehicle Make and Model'];
+      otherVehicleID = snapshot['Driver Vehicle License Plate Number'];
+      accidentLocation = snapshot['Accident Location'];
+      dateOfBirth = snapshot['Date of Birth'];
+      phoneNumber = snapshot['Phone Number'];
+      driversLicense = snapshot['Driver License'];
+      insuranceCo = snapshot['Insurance Company'];
+      policyNumber = snapshot['Policy Number'];
+      policyHolderName = snapshot['Policyholder Name'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,19 +130,19 @@ class CrashReports extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(30),
                                   color: backgroundAccentTwo,
                                 ),
-                                child: const Column(
+                                child: Column(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 80,
                                     ),
                                     Text(
-                                      'John Doe',
-                                      style: TextStyle(
+                                      fullName ?? "",
+                                      style: const TextStyle(
                                         color: contrastAccentTwo,
                                         fontSize: 36,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(children: <Widget>[
@@ -98,7 +154,7 @@ class CrashReports extends StatelessWidget {
                                                 fontSize: 18)),
                                       ),
                                       Expanded(
-                                        child: Text("USER DOB HERE ",
+                                        child: Text(dateOfBirth ?? "",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: backgroundPrimary,
@@ -114,7 +170,7 @@ class CrashReports extends StatelessWidget {
                                                 fontSize: 18)),
                                       ),
                                       Expanded(
-                                        child: Text("USER PHONE HERE ",
+                                        child: Text(phoneNumber ?? "",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: backgroundPrimary,
@@ -130,8 +186,7 @@ class CrashReports extends StatelessWidget {
                                                 fontSize: 18)),
                                       ),
                                       Expanded(
-                                        child: Text(
-                                            "USER Driver's License Num HERE ",
+                                        child: Text(driversLicense ?? "",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: backgroundPrimary,
@@ -147,7 +202,7 @@ class CrashReports extends StatelessWidget {
                                                 fontSize: 18)),
                                       ),
                                       Expanded(
-                                        child: Text("USER INSURANCE HERE",
+                                        child: Text(insuranceCo ?? "",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: backgroundPrimary,
@@ -163,7 +218,7 @@ class CrashReports extends StatelessWidget {
                                                 fontSize: 18)),
                                       ),
                                       Expanded(
-                                        child: Text("PHN NAME ",
+                                        child: Text(policyHolderName ?? "",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: backgroundPrimary,
@@ -179,7 +234,7 @@ class CrashReports extends StatelessWidget {
                                                 fontSize: 18)),
                                       ),
                                       Expanded(
-                                        child: Text("USER PN HERE ",
+                                        child: Text(policyNumber ?? "",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: backgroundPrimary,
