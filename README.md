@@ -41,6 +41,21 @@ Frontend AND Backend
   - Set up a camera feature focusing on image output and detection of objects from those images
   - Integrate frontend and backend to display data that relies on database storage
 
+# Presentation
+
+# Pages
+## Onboarding Screens
+![SafeDrive Onboarding Screens](https://github.com/acm-projects/SafeDrive/assets/78606776/6781a1e8-47f6-4ada-b145-97834b72a5b2)
+
+## Camera
+![SafeDriveCamera (1)](https://github.com/acm-projects/SafeDrive/assets/78606776/b8505c33-69e7-459e-814f-8e9afa1122cb)
+
+## Accident Checklist
+![SafeDrive Accident Checklist](https://github.com/acm-projects/SafeDrive/assets/78606776/380103b1-0fe6-45ab-8533-279a01eb6bfd)
+
+## Statistics
+![SafeDrive Stats](https://github.com/acm-projects/SafeDrive/assets/78606776/04345360-3269-4945-868d-68f33b68d59c)
+
 # Tech Stack
 * Wireframing: Figma
 * IDE: Android Studio or VSC
