@@ -1,6 +1,6 @@
 # SafeDrive
 
-Distracted Driving is a huge problem in the current day. Introducing SafeDrive. SafeDrive's main feature is that it uses your phone’s camera to detect the distance you are from objects around you such as cars in front of you and passing by you. With additional safety features like tracking hard brakes, speed, and other similar features, SafeDrive provides assistance and accountability for all kinds of drivers.
+Distracted Driving is a huge problem in the current day. Introducing SafeDrive. SafeDrive's main feature is that it uses your phone’s camera to detect the distance you are from objects around you such as cars in front of you and passing by you. With additional safety features like a comprehensive accident checklist and statistics to collision warnings, hard brakes and average speed, SafeDrive provides assistance and accountability for all kinds of drivers.
 
 # MVP (Minimum Viable Product)
 
@@ -42,18 +42,20 @@ Frontend AND Backend
   - Integrate frontend and backend to display data that relies on database storage
 
 # Presentation
+[SafeDrive.pdf](https://github.com/acm-projects/SafeDrive/files/13537910/SafeDrive.pdf)
+
 
 # Pages
-## Onboarding Screens
+### Onboarding Screens
 ![SafeDrive Onboarding Screens](https://github.com/acm-projects/SafeDrive/assets/78606776/6781a1e8-47f6-4ada-b145-97834b72a5b2)
 
-## Camera
+### Camera
 ![SafeDriveCamera (1)](https://github.com/acm-projects/SafeDrive/assets/78606776/b8505c33-69e7-459e-814f-8e9afa1122cb)
 
-## Accident Checklist
+### Accident Checklist
 ![SafeDrive Accident Checklist](https://github.com/acm-projects/SafeDrive/assets/78606776/380103b1-0fe6-45ab-8533-279a01eb6bfd)
 
-## Statistics
+### Statistics
 ![SafeDrive Stats](https://github.com/acm-projects/SafeDrive/assets/78606776/04345360-3269-4945-868d-68f33b68d59c)
 
 # Tech Stack
