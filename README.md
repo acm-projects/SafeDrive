@@ -12,7 +12,7 @@ Distracted Driving is a huge problem in the current day. Introducing SafeDrive. 
 # Stretch Goals
 
 * Record while driving and act as a dash cam
-* OCR for insurance and lisence info
+* OCR for insurance and license info
 * Badges and leveling up
 * License and Vehicle registration information
 * User-based crowd-sourced navigation information
@@ -103,8 +103,8 @@ Frontend AND Backend
   # Meet the Team
   
   * Frontend
-    * Poojitha Kommera
     * Advay	Chandramouli
+    * Poojitha Kommera
       
   * Backend
     * Arvindh Kumar	Kalainathan
