@@ -99,6 +99,7 @@ Frontend AND Backend
   - [OpenCV Github Tutorial](https://github.com/westracer/flutter_native_opencv)
   - [AWS SageMaker in Dart](https://pub.dev/packages/aws_sagemaker_api)
   - [MySQL](https://pub.dev/packages/mysql1)
+  - [yolov5](https://github.com/ultralytics/yolov5/releases)
   
   # Meet the Team
   
